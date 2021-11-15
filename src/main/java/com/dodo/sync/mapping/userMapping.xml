@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapping.UserMapping">
+	<select id="getParts" parameterType="String"
+		resultType="Map">
+		WITH PS (LEVEL,
+		ID,
+		PARTS_NO,
+		REP_NEW_PARTSNO) AS (
+		SELECT
+		    0,
+		    ID,
+		    PARTS_NO,
+		    REP_NEW_PARTSNO
+		FROM
+		    S_PARTS
+		WHERE
+		    PARTS_NO = #{partsNo}
+		UNION ALL
+		SELECT
+		    LEVEL + 1 ,
+		    CHILD.ID,
+		    CHILD.PARTS_NO,
+		    CHILD.REP_NEW_PARTSNO
+		FROM
+		    PS PARENT,
+		    S_PARTS CHILD
+		WHERE
+		    PARENT.REP_NEW_PARTSNO = CHILD.PARTS_NO)
+		SELECT
+		    ID,
+		    PARTS_NO,
+		    REP_NEW_PARTSNO
+		FROM
+		    PS;
+	</select>
+	<select id="getDisease" parameterType="bean.DiseaseHistory"
+		resultType="Long">
+		SELECT
+		count(*)
+		FROM
+		`disease_history`
+		WHERE
+		society_id = #{societyId}
+		AND disease_code = #{diseaseCode}
+		AND disease_name = #{diseaseName}
+	</select>
+</mapper>

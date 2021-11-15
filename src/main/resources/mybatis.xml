@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<!-- 配置数据库连接信息 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="com.ibm.db2.jcc.DB2Driver" />
+				<!--<property name="url"
+					value="jdbc:db2://10.110.37.229:50100/DMSSIT" />
+				<property name="username" value="ndms2" />
+				<property name="password" value="ndms2@10086" />-->
+ 				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url"
+					value="jdbc:mysql://10.113.9.101:3306/nuzar_config?serverTimezone=UTC" />
+				<property name="username" value="nuzar" />
+				<property name="password" value="Evphtky/G0E+Xe8O9YiLeNcdlM8cpDonh1ZN0qivIVc7YD6foWQRn0tXEN6NfcBz+oz4IuR8brLTuH+EWDOa5w==" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="mapping/userMapping.xml" />
+	</mappers>
+</configuration>

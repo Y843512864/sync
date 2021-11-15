@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="mapping.UserMapping">
+<resultMap id="BaseResultMap" type="com.dodo.sync.vo.SParts">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="PARTS_NO" jdbcType="VARCHAR" property="partsNo" />
+    <result column="REP_NEW_PARTSNO" jdbcType="VARCHAR" property="repNewPartsno" />
+</resultMap> 
+	<!--<select id="getParts" parameterType="String" resultMap="BaseResultMap">
+		WITH PS (LEVEL,
+		ID,
+		PARTS_NO,
+		REP_NEW_PARTSNO) AS (
+		SELECT
+		    0,
+		    ID,
+		    PARTS_NO,
+		    REP_NEW_PARTSNO
+		FROM
+		    DGD002.S_PARTS
+		WHERE
+		    PARTS_NO = #{partsNo}
+		UNION ALL
+		SELECT
+		    LEVEL + 1 ,
+		    CHILD.ID,
+		    CHILD.PARTS_NO,
+		    CHILD.REP_NEW_PARTSNO
+		FROM
+		    PS PARENT,
+		    DGD002.S_PARTS CHILD
+		WHERE
+		    PARENT.REP_NEW_PARTSNO = CHILD.PARTS_NO
+		    AND 5>LEVEL)
+		SELECT
+		    ID id,
+		    PARTS_NO partsNo,
+		    REP_NEW_PARTSNO repNewPartsNo
+		FROM
+		    PS
+	</select>
+	
+	<select id="getPartsByRepNo" parameterType="String" resultMap="BaseResultMap">
+	select * from dgd045.s_parts where REP_NEW_PARTSNO=#{partsNo}
+	</select>
+	<select id="getPartsByNo" parameterType="String" resultMap="BaseResultMap">
+	select * from dgd045.s_parts where PARTS_NO=#{partsNo}
+	</select>-->
+	<select id="getConfig" resultType="String">
+	select value from property
+	</select>
+</mapper>
