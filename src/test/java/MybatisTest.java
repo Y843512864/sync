@@ -38,72 +38,9 @@ public class MybatisTest {
         session.close();
     }
 
-    @Test
+    //@Test
     public void configTest(){
         Object o = session.selectList("mapping.UserMapping.getConfig");
         System.out.println(o);
     }
-
-//    @Test
-//    public void test() {
-//        SParts rPn = new SParts();
-//        rPn.setId("123");
-//        rPn.setPartsNo("46100THAH05");// 1219121912b
-//        rPn.setRepNewPartsno("46100THAH02");// 121912191220
-////        System.out.println(getAllPatsTree(rPn, rPn));
-//        String rst ="";
-//
-//        if (null != rPn.getRepNewPartsno() && !"".equals(rPn.getRepNewPartsno())) {
-//            SParts repSp = session.selectOne("mapping.UserMapping.getPartsByNo", rPn.getRepNewPartsno());
-//            SParts currentSp = session.selectOne("mapping.UserMapping.getPartsByNo", rPn.getPartsNo());
-//
-//            if (null == repSp && !StringUtils.equals(currentSp.getRepNewPartsno(), rPn.getRepNewPartsno())) {
-//                rst = String.format(REP_PART_NOT_EXISTS, rPn.getRepNewPartsno());
-//            } else if (StringUtils.equals(rPn.getRepNewPartsno(), rPn.getPartsNo())) {
-//                rst =  String.format(CYCLE_REP_RST, rPn.getRepNewPartsno(), rPn.getPartsNo());
-//            } else {
-//                 rst = getAllPatsTree(rPn, rPn);
-////                if (!rst.equals("")) {
-////                    return new ClientRequestResult(false, rst, null);
-////                }
-//            }
-//        }
-//
-//        System.out.println(rst);
-//
-//
-//    }
-//
-////    private String getAllPatsTree(SParts srcp, SParts nextp) {
-////        List<SParts> rP = session.selectList("mapping.UserMapping.getPartsByRepNo", nextp.getPartsNo());
-////        for (SParts sp : rP) {
-////            if (sp.getPartsNo().equals(srcp.getRepNewPartsno()) && sp.getRepNewPartsno().equals(srcp.getPartsNo())) {
-////                return String.format(rst, nextp.getPartsNo(), nextp.getRepNewPartsno(), srcp.getPartsNo(),
-////                        srcp.getRepNewPartsno());
-////            }
-////            System.out.println(sp);
-////            return getAllPatsTree(srcp, sp);
-////        }
-////        return "";
-////    }
-//    private String getAllPatsTree(SParts srcp, SParts nextp) {
-//        List<SParts> rP = session.selectList("mapping.UserMapping.getPartsByRepNo", nextp.getPartsNo());    
-//        for (SParts sp : rP) {
-//            if (StringUtils.equals(sp.getPartsNo(), srcp.getRepNewPartsno())) {
-//                return String.format(CYCLE_REP_RST, srcp.getRepNewPartsno(), srcp.getPartsNo());
-//            }
-//            return getAllPatsTree(srcp, sp);
-//        }
-//        return "";
-//    }
-//    private String getRep(SParts srcp, SParts nextp, int rank) {
-////        SParts rP = session.selectOne("mapping.UserMapping.getPartsByNo", nextp.getRepNewPartsno());
-//        SParts rP = session.selectOne("mapping.UserMapping.getPartsByRepNo", nextp.getPartsNo());
-//        if (rP == null)
-//            return "";
-//        else if (rP.getRepNewPartsno().equals(srcp.getPartsNo()) || rank > 8)
-//            return String.format("", srcp.getPartsNo(), srcp.getRepNewPartsno(), rP.getPartsNo(),
-//                    rP.getRepNewPartsno());
-//        return getRep(srcp, rP, ++rank);
-//    }
 }
